@@ -548,15 +548,15 @@
       gap: 7px;
     }
     .team-footer-avatar {
-      width: 53px;
-      height: 53px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: var(--accent-dim);
       border: 1.5px solid var(--border-h);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       color: var(--accent);
       overflow: hidden;
       flex-shrink: 0;
@@ -4156,6 +4156,57 @@
       justify-content: center;
     }
 
+    /* ─── Blackout overlay (clicker B / "." key) ───────────────── */
+    #blackout {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    #blackout.active {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    /* ─── Fullscreen toggle ─────────────────────────────────────── */
+    #fullscreen-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 22px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(17,17,17,0.65);
+      backdrop-filter: blur(12px);
+      color: var(--text-2);
+      cursor: pointer;
+      z-index: 90;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0;
+      opacity: 0.55;
+      transition: opacity 0.3s, border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+    }
+    #fullscreen-btn:hover {
+      opacity: 1;
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow), 0 0 30px var(--accent-glow2);
+      transform: scale(1.08);
+    }
+    #fullscreen-btn svg {
+      width: 16px; height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
+    }
+
     /* ─── Keyboard hint ─────────────────────────────────────────── */
     #kbd-hint {
       position: fixed;
@@ -4237,7 +4288,7 @@
         <span class="tp" style="top:88%;right:42%;animation-delay:4.8s"></span>
       </div>
       <span class="slide-label" data-fx="fade-up" data-fx-delay="0">Meetup · Amdocs · 2026</span>
-      <h1 class="slide-title" data-fx="fade-up" data-fx-delay="120">מהפכת המהפכה האג'נטית בפיתוח למידה<span class="title-caret" aria-hidden="true"></span></h1>
+      <h1 class="slide-title" data-fx="fade-up" data-fx-delay="120">המהפכה האג'נטית בפיתוח למידה<span class="title-caret" aria-hidden="true"></span></h1>
       <div class="accent-line" data-fx="fade-up" data-fx-delay="220"></div>
       <p class="slide-sub" data-fx="fade-up" data-fx-delay="320">איך <span style="font-style:normal;color:var(--text-1);">Non-Tech People</span> הופכים ל<span style="font-style:normal;color:var(--text-1);">Builders</span> בעידן ה-AI</p>
       <div class="logo-wrap">
@@ -4263,7 +4314,7 @@
     <!-- 3, Guru -->
     <div class="slide" data-layout="guru">
       <img class="guru-img" src="img/גורו.png" alt="גורואים">
-      <p class="guru-pre">גם לכם נמאס מכל הגורויים?</p>
+      <p class="guru-pre">גם לכם נמאס מכל הגורואים?</p>
       <h1 class="guru-title">אז היום זה לא הולך להיות כזה</h1>
     </div>
 
@@ -4289,7 +4340,7 @@
           </div>
           <div class="team-member-info">
             <div class="team-member-name">מירב טלר ושדי</div>
-            <div class="team-member-role">מומחית בטכנולוגיות למידה<br>מנהלת מערכת על למידה, קמפוס פועלים</div>
+            <div class="team-member-role">מומחית בטכנולוגיות למידה ומנהלת מערכת הלמידה<br>קמפוס פועלים</div>
           </div>
         </div>
         <div class="team-member">
@@ -6064,6 +6115,40 @@
       </div>
     </div>
 
+    <!-- Bonus / PRD Template -->
+    <div class="slide" data-layout="cta" style="justify-content:center;gap:18px;">
+      <span class="slide-label">בונוס · prd template</span>
+
+      <div class="gift-card">
+        <div class="gift-card-left">
+          <div class="gift-qr">
+            <img src="img/prd-template-qr.png" alt="QR code linking to the PRD Template site">
+          </div>
+          <div class="gift-scan">Scan with your phone camera</div>
+          <div class="gift-url">booya1986.github.io/PRD_Tamplet</div>
+        </div>
+
+        <div class="gift-card-right">
+          <span class="gift-badge">Free PRD Template</span>
+          <h2 class="gift-title">PRD Template</h2>
+          <p class="gift-subtitle">A comprehensive Product Requirements Document template, turn vague ideas into a structured spec your team and your AI agents can actually build from.</p>
+
+          <div class="gift-what">
+            <div class="gift-what-title">What you get</div>
+            <ul class="gift-what-list">
+              <li>14 ready-made sections, from purpose and goals to approvals and appendix</li>
+              <li>Functional &amp; non-functional requirements with structured prompts</li>
+              <li>User stories, personas, scope, and use-case scaffolding</li>
+              <li>Timeline, milestones, success metrics, and KPIs</li>
+              <li>Open questions, risks, and stakeholder sign-off blocks</li>
+            </ul>
+          </div>
+
+          <div class="gift-footer">Open source, free to fork and adapt for any product, team, or domain</div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <!-- /slide-container -->
 
@@ -6073,9 +6158,15 @@
   <!-- Live region for screen reader -->
   <div class="sr-only" aria-live="polite" id="slide-announce"></div>
 
+  <!-- Fullscreen toggle (also bound to F key) -->
+  <button id="fullscreen-btn" aria-label="מסך מלא (F)" title="מסך מלא · F" type="button"></button>
+
+  <!-- Blackout overlay for clicker "black screen" key -->
+  <div id="blackout" aria-hidden="true"></div>
+
   <!-- Keyboard hint -->
   <div id="kbd-hint" aria-hidden="true">
-    <span class="kbd">←</span><span class="kbd">→</span><span class="kbd">Space</span>
+    <span class="kbd">←</span><span class="kbd">→</span><span class="kbd">Space</span><span class="kbd">F</span>
     <span class="kbd-text">לניווט</span>
   </div>
 
@@ -6090,7 +6181,7 @@
     const slideVideo = document.getElementById('slide-video');
     const VIDEO_SLIDE = 1;
     const GURU_SLIDE = 2;
-    const GIFT_SLIDE = total - 1;
+    const BONUS_SLIDES = [total - 2, total - 1]; // Free Skill + PRD Template, both fire confetti
     const guruSound = new Audio('sound/sound3.mp3');
     const announce = document.getElementById('slide-announce');
     let userHasInteracted = false;
@@ -6128,14 +6219,15 @@
       'סיכום ולקחים',
       'AI זה לא קסם',
       'תודה',
-      'מתנה'
+      'מתנה',
+      'בונוס PRD'
     ];
 
     // Per-slide transition duration (ms). Default 520; tuned slightly per slide.
     const TRANSITION_DUR = {
       4: 380, 5: 380, 6: 380, 7: 380, // stat run, snappier
       8: 680,                          // → divider, weightier
-      24: 640, 25: 640                 // → תודה, gift
+      24: 640, 25: 640, 26: 640        // → תודה, gift, prd bonus
     };
     const DEFAULT_DUR = 520;
     const TRANS_EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
@@ -6362,7 +6454,7 @@
         guruSound.currentTime = 0;
         guruSound.play().catch(() => {});
       }
-      if (newIndex === GIFT_SLIDE && prevIndex !== GIFT_SLIDE) {
+      if (BONUS_SLIDES.includes(newIndex) && newIndex !== prevIndex) {
         fireConfetti();
       }
     }
@@ -6373,16 +6465,85 @@
     prevBtn.addEventListener('click', goPrev);
     nextBtn.addEventListener('click', goNext);
 
-    // Keyboard (RTL: → = back, ← = forward; Space = forward; Backspace/PageUp = back)
+    // ─── Fullscreen toggle (F key + button) ────────────────────────
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const FS_ICON_EXPAND   = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+    const FS_ICON_COLLAPSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+    function isFullscreen() {
+      return !!(document.fullscreenElement || document.webkitFullscreenElement);
+    }
+    function toggleFullscreen() {
+      if (isFullscreen()) {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) exit.call(document);
+      } else {
+        const el = document.documentElement;
+        const req = el.requestFullscreen || el.webkitRequestFullscreen;
+        if (req) req.call(el);
+      }
+    }
+    function syncFullscreenIcon() {
+      const fs = isFullscreen();
+      fullscreenBtn.innerHTML = fs ? FS_ICON_COLLAPSE : FS_ICON_EXPAND;
+      fullscreenBtn.setAttribute('aria-label', fs ? 'יציאה ממסך מלא (F)' : 'מסך מלא (F)');
+      fullscreenBtn.setAttribute('title', fs ? 'יציאה ממסך מלא · F' : 'מסך מלא · F');
+    }
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', syncFullscreenIcon);
+    document.addEventListener('webkitfullscreenchange', syncFullscreenIcon);
+    syncFullscreenIcon();
+
+    // ─── Clicker blackout overlay (B / "." key) ────────────────────
+    const blackout = document.getElementById('blackout');
+    function setBlackout(on) { blackout.classList.toggle('active', !!on); }
+    function isBlackedOut() { return blackout.classList.contains('active'); }
+    blackout.addEventListener('click', () => setBlackout(false));
+
+    // Keyboard + clicker remote (RTL deck: → = back, ← = forward.
+    // Standard clicker keys: PageUp/PageDown nav; F5 = start; Esc = exit FS (browser);
+    // B / "." = black screen; Home/End = first/last slide; F = fullscreen toggle)
     document.addEventListener('keydown', e => {
       if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+
+      // Black-screen toggle (PowerPoint convention used by most clickers)
+      if ((e.key === 'b' || e.key === 'B' || e.key === '.') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        setBlackout(!isBlackedOut());
+        return;
+      }
+      // Any other handled key dismisses the blackout, then runs its action
+      if (isBlackedOut()) setBlackout(false);
+
       if (e.key === 'ArrowRight' || e.key === 'PageUp' || e.key === 'Backspace') {
         e.preventDefault();
         goPrev();
+        return;
       }
       if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
         e.preventDefault();
         goNext();
+        return;
+      }
+      if (e.key === 'Home') {
+        e.preventDefault();
+        goTo(0);
+        return;
+      }
+      if (e.key === 'End') {
+        e.preventDefault();
+        goTo(total - 1);
+        return;
+      }
+      if (e.key === 'F5') {
+        // Start-presentation key on most clickers: enter fullscreen, jump to first slide
+        e.preventDefault();
+        if (!isFullscreen()) toggleFullscreen();
+        goTo(0);
+        return;
+      }
+      if ((e.key === 'f' || e.key === 'F') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        toggleFullscreen();
       }
     });
 
