@@ -190,7 +190,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:v
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!('IntersectionObserver' in window)||reduce){els.forEach(function(el){el.classList.add('in')});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
-  els.forEach(function(el,i){el.style.transitionDelay=((i%4)*70)+'ms';io.observe(el)});
+  var vh=window.innerHeight;els.forEach(function(el,i){if(el.getBoundingClientRect().top<vh){el.classList.add('in');return}el.style.transitionDelay=((i%4)*70)+'ms';io.observe(el)});
   setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},2500);
 })();
 </script>
