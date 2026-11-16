@@ -72,7 +72,7 @@
   function bytes(s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; }
   function b64(buf) { var a = new Uint8Array(buf), s = ""; for (var i = 0; i < a.length; i++) s += String.fromCharCode(a[i]); return btoa(s); }
   function fetchDoc() {
-    if (!docP) docP = fetch("doc.bin").then(function (r) { if (!r.ok) throw new Error("load"); return r.arrayBuffer(); });
+    if (!docP) docP = fetch("doc.bin", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error("load"); return r.arrayBuffer(); });
     docP.catch(function () { docP = null; });
     return docP;
   }
