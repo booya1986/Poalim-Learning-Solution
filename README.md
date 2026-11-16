@@ -8,6 +8,7 @@ A collection of single-file HTML presentations and learning artefacts produced b
 | --- | --- | --- |
 | [vibe-coding-in-LD](./vibe-coding-in-LD/) | Vibe Coding in L&D — the agentic AI revolution in Learning & Development. Delivered at the Amdocs Meetup. | [Open](https://booya1986.github.io/Poalim-Learning-Solution/vibe-coding-in-LD/) |
 | [campus-2027-summary](./campus-2027-summary/) | Summary of the campus management team 2027 thinking session (whiteboard, trends, continue/start). | [Open](https://booya1986.github.io/Poalim-Learning-Solution/campus-2027-summary/) |
+| [campus-2027-strategy](./campus-2027-strategy/) | Campus 2027 strategy document with Hebrew narration. Internal: the page and its audio are encrypted and open with a password. | [Open](https://booya1986.github.io/Poalim-Learning-Solution/campus-2027-strategy/) |
 
 ## How the decks work
 

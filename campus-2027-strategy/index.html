@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>קמפוס 2027 · מסמך אסטרטגיה</title>
+<meta name="description" content="מסמך פנימי. נפתח בסיסמה.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:url" content="https://booya1986.github.io/Poalim-Learning-Solution/campus-2027-strategy/">
+<meta property="og:title" content="קמפוס 2027 · מסמך אסטרטגיה">
+<meta property="og:description" content="מסמך פנימי. נפתח בסיסמה.">
+<meta property="og:image" content="https://booya1986.github.io/Poalim-Learning-Solution/campus-2027-strategy/og.jpg">
+<meta property="og:image:secure_url" content="https://booya1986.github.io/Poalim-Learning-Solution/campus-2027-strategy/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="קמפוס 2027, מסמך אסטרטגיה">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#111111;--ink:#F0F0F0;--muted:rgba(240,240,240,.72);--accent:#FF2020;--accent-fill:#E01B1B;--ease-out:cubic-bezier(.23,1,.32,1)}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Heebo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    display:flex;align-items:center;justify-content:center;padding:24px 20px calc(24px + env(safe-area-inset-bottom,0px))}
+  main{width:100%;max-width:24rem}
+  h1{margin:0;font-size:clamp(2rem,9vw,2.7rem);font-weight:900;line-height:1.1;letter-spacing:-.01em}
+  h1 b{color:var(--accent);font-weight:900}
+  .sub{margin:.7rem 0 2rem;color:var(--muted);font-size:1.05rem;line-height:1.6}
+  label{display:block;font-size:.92rem;font-weight:600;margin-bottom:.45rem}
+  input[type=password]{width:100%;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:#1B1B1B;color:#fff;
+    font:600 1.1rem "Heebo",system-ui,sans-serif;padding:0 16px;direction:ltr;text-align:start;outline:none;transition:border-color .2s ease}
+  input[type=password]:focus-visible{border-color:#fff}
+  .keep{display:flex;align-items:center;gap:.55rem;margin:1rem 0 1.4rem;color:var(--muted);font-size:.95rem;font-weight:400;cursor:pointer}
+  .keep input{width:18px;height:18px;accent-color:var(--accent-fill);margin:0}
+  button{width:100%;height:52px;border:0;border-radius:99px;background:var(--accent-fill);color:#fff;font:800 1.05rem "Heebo",system-ui,sans-serif;cursor:pointer;
+    transition:background .2s ease,scale .16s var(--ease-out)}
+  button:active{scale:.97}
+  button[disabled]{opacity:.6;cursor:default}
+  button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  @media (hover:hover) and (pointer:fine){ button:not([disabled]):hover{background:var(--accent)} }
+  .msg{min-height:1.6em;margin:.9rem 0 0;font-size:.95rem;color:#FF8A8A}
+  .foot{margin-top:2.2rem;color:rgba(240,240,240,.66);font-size:.88rem}
+  @media (prefers-reduced-motion:reduce){ button:active{scale:1} }
+</style>
+</head>
+<body>
+<main>
+  <h1>קמפוס <b>AI native</b></h1>
+  <p class="sub">מסמך האסטרטגיה של קמפוס 2027. המסמך פנימי, ולכן הוא נפתח בסיסמה.</p>
+  <form id="f" autocomplete="off">
+    <label for="pw">סיסמה</label>
+    <input id="pw" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false" required>
+    <label class="keep"><input id="keep" type="checkbox" checked>לזכור במכשיר הזה</label>
+    <button id="go" type="submit">פתיחת המסמך</button>
+    <p class="msg" id="msg" role="alert"></p>
+  </form>
+  <p class="foot">בנק הפועלים · מחלקת הקמפוס</p>
+</main>
+<script>
+(function () {
+  "use strict";
+  var SALT = "Y2FtcHVzLTIwMjctc3RyYXRlZ3kvZG9jL3Yx", ITER = 600000, LS = "campus-2027-strategy-key";
+  var f = document.getElementById("f"), pw = document.getElementById("pw"), go = document.getElementById("go"),
+      msg = document.getElementById("msg"), keep = document.getElementById("keep"), docP = null;
+  function bytes(s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; }
+  function b64(buf) { var a = new Uint8Array(buf), s = ""; for (var i = 0; i < a.length; i++) s += String.fromCharCode(a[i]); return btoa(s); }
+  function fetchDoc() {
+    if (!docP) docP = fetch("doc.bin").then(function (r) { if (!r.ok) throw new Error("load"); return r.arrayBuffer(); });
+    docP.catch(function () { docP = null; });
+    return docP;
+  }
+  function open(raw) {   /* raw: the 32 bytes of the document key */
+    return Promise.all([fetchDoc(), crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"])]).then(function (r) {
+      return crypto.subtle.decrypt({ name: "AES-GCM", iv: new Uint8Array(r[0], 0, 12) }, r[1], new Uint8Array(r[0], 12));
+    }).then(function (plain) {
+      var html = new TextDecoder("utf-8").decode(plain);
+      document.open(); document.write(html); document.close();
+    });
+  }
+  function derive(password) {
+    return crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]).then(function (km) {
+      return crypto.subtle.deriveBits({ name: "PBKDF2", salt: bytes(SALT), iterations: ITER, hash: "SHA-256" }, km, 256);
+    });
+  }
+  if (!window.crypto || !crypto.subtle) { msg.textContent = "הדפדפן הזה לא יכול לפתוח את המסמך. כדאי לנסות בדפדפן מעודכן."; go.disabled = true; return; }
+  fetchDoc();
+  var saved = null;
+  try { saved = localStorage.getItem(LS); } catch (e) {}
+  if (saved) {
+    go.disabled = true; go.textContent = "פותח את המסמך";
+    open(bytes(saved)).catch(function () {
+      try { localStorage.removeItem(LS); } catch (e) {}
+      go.disabled = false; go.textContent = "פתיחת המסמך"; pw.focus();
+    });
+  } else { pw.focus(); }
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!pw.value) return;
+    go.disabled = true; go.textContent = "פותח את המסמך"; msg.textContent = "";
+    var raw;
+    derive(pw.value).then(function (bits) { raw = bits; return open(new Uint8Array(bits)); }).then(function () {
+      if (keep.checked) { try { localStorage.setItem(LS, b64(raw)); } catch (e) {} }
+    }).catch(function (err) {
+      go.disabled = false; go.textContent = "פתיחת המסמך";
+      msg.textContent = err && err.message === "load" ? "המסמך לא נטען. כדאי לבדוק את החיבור ולנסות שוב." : "הסיסמה לא נכונה.";
+      pw.select();
+    });
+  });
+})();
+</script>
+</body>
+</html>
